@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: librespeed-env
+  namespace: final
+data:
+  TITLE_LibreSpeed: "true"
+  MODE: frontend
+  TELEMETRY: "true"
+  ENABLE_ID_OBFUSCATION: "true"
+  REDACT_IP_ADDRESSES: "false"
+  DB_TYPE: mysql
+  DB_CONNECTION: mysql
+  DB_HOSTNAME: mysql-headless.db.svc.cluster.local
+  DB_PORT: "3306"
+  DB_NAME: librespeed

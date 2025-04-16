@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress 
+metadata:
+  name: librepeed-ingress
+  namespace: final
+spec:
+  rules:
+    - host: speedtest-130.193.48.225.nip.io
+      http:
+        paths:
+          - path : /
+            pathType : Prefix
+            backend :
+              service :
+                name : librespeed
+                port :
+                  number : 80
