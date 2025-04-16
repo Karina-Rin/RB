@@ -23,15 +23,15 @@ spec:
             - -c
             - |
               until mysql -h mysql-headless.db.svc.cluster.local -u $DB_USERNAME -p$DB_PASSWORD -e "SELECT 1"; do
-                echo "Waiting for mysql in namespace db..."
+                echo "Ждем mysql в namespace db..."
                 sleep 5
               done
-              echo "MySQL is ready"
-              echo "Checking for database and table existence..."
-              if mysql -h mysql-headless.db.svc.cluster.local -u $DB_USERNAME -p$DB_PASSWORD -e "USE librespeed; SELECT 1 FROM speedtest_users LIMIT 1;" ; then
-                echo "Database and table exist. No migrations required."
+              echo "MySQL готова"
+              echo "Проверка существования базы данных и таблиц..."
+              if mysql -h mysql-headless.db.svc.cluster.local -u $DB_USERNAME -p$DB_PASSWORD -e "USE librespeed; SELECT 1 FROM speedtest_users LIMIT 1;" ; then 
+                echo "База данных и таблица существуют. Миграции не требуются."
               else
-                echo "Database or table does not exist. Performing migrations..."
+                echo "База данных или таблица не существуют. Выполняем миграции..."
                 mysql -h mysql-headless.db.svc.cluster.local -u $DB_USERNAME -p$DB_PASSWORD librespeed < /telemetry_mysql.sql
               fi
           envFrom:
@@ -40,9 +40,16 @@ spec:
           - secretRef:
               name: librespeed-secret
           volumeMounts:
-            - name: mysql-sql
+            - name: mysql-sql 
               mountPath: /telemetry_mysql.sql
               subPath: telemetry_mysql.sql
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "500m"
+            limits:
+              memory: "512Mi"
+              cpu: "1"
       imagePullSecrets:
         - name: registrysecret
       containers:
@@ -59,6 +66,13 @@ spec:
           - name: servers-volume
             mountPath: /servers.json
             subPath: servers.json
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "500m"
+          limits:
+            memory: "512Mi"
+            cpu: "1"
       volumes:
       - name: servers-volume
         configMap:

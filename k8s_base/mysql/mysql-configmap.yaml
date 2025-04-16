@@ -6,9 +6,9 @@ metadata:
   labels:
     app: db
 data:
-  MYSQL_DATABASE: librespeed
-  DB_TYPE: mysql
-  DB_CONNECTION: mysql
-  DB_HOSTNAME: mysql
+  MYSQL_DATABASE: "librespeed"
+  DB_TYPE: "mysql"
+  DB_CONNECTION: "mysql"
+  DB_HOSTNAME: "mysql"
   DB_PORT: "3306"
-  DB_NAME: librespeed
+  DB_NAME: "librespeed"

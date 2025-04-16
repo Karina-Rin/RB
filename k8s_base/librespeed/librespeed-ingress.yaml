@@ -1,17 +1,19 @@
 apiVersion: networking.k8s.io/v1
-kind: Ingress 
+kind: Ingress
 metadata:
-  name: librepeed-ingress
+  name: librespeed-ingress
   namespace: final
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
 spec:
   rules:
-    - host: speedtest-130.193.48.225.nip.io
-      http:
-        paths:
-          - path : /
-            pathType : Prefix
-            backend :
-              service :
-                name : librespeed
-                port :
-                  number : 80
+  - host: librespeed.example.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: librespeed
+            port:
+              number: 80
