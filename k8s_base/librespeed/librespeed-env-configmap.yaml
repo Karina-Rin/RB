@@ -2,16 +2,16 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: librespeed-env
+  name: librespeed-env # конфигмап для хранения env-переменных
   namespace: final
 data:
   TITLE_LibreSpeed: "true"
-  MODE: "frontend"
-  TELEMETRY: "true"
-  ENABLE_ID_OBFUSCATION: "true"
-  REDACT_IP_ADDRESSES: "false"
-  DB_TYPE: "mysql"
-  DB_CONNECTION: "mysql"
-  DB_HOSTNAME: "mysql-headless.db.svc.cluster.local"
-  DB_PORT: "3306"
-  DB_NAME: "librespeed"
+  MODE: "frontend" # Приложение должно быть запущено во frontend-режиме
+  TELEMETRY: "true" # с хранением телеметрии
+  ENABLE_ID_OBFUSCATION: "true" # обфускацией ID
+  REDACT_IP_ADDRESSES: "false" # без возможности редактирования IP-адресов
+  DB_TYPE: "mysql" # в качестве базы данных используется MySQL
+  DB_CONNECTION: "mysql" # тип соединения с базой данных
+  DB_HOSTNAME: "mysql-headless.db.svc.cluster.local" # имя хоста (адрес) сервера MySQL
+  DB_PORT: "3306" # Порт, который используется для подключения к серверу MySQL (стандартный порт MySQL)
+  DB_NAME: "librespeed" # Имя базы данных MySQL, которая будет использоваться для хранения данных LibreSpeed

@@ -6,9 +6,9 @@ metadata:
   name: mysql
   namespace: db
   labels:
-    app: db
+    app: db # Метка на всех манифестах, касающихся СУБД
 spec:
   ports:
     - port: 3306
   selector:
-    app: db
+    app: db # Метка на всех манифестах, касающихся СУБД

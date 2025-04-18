@@ -5,7 +5,7 @@ metadata:
   name: mysql
   namespace: db
   labels:
-    app: db
+    app: db # Метка на всех манифестах, касающихся СУБД
 spec:
   serviceName: mysql-headless
   replicas: 1
@@ -15,12 +15,12 @@ spec:
   template:
     metadata:
       labels:
-        app: db
+        app: db # Метка на всех манифестах, касающихся СУБД
     spec:
       containers:
       - name: mysql
-        image: mysql:5.7
-        envFrom:
+        image: mysql:8.0 # последняя версия MySQL, доступная для Ubuntu 22.04
+        envFrom: # загружаем конфигмап librespeed-env через envFrom
           - configMapRef:
               name: mysql-configmap
           - secretRef:
@@ -34,7 +34,7 @@ spec:
   - metadata:
       name: mysql-pvc
       labels:
-        app: db
+        app: db # Метка на всех манифестах, касающихся СУБД
     spec:
       accessModes: ["ReadWriteOnce"]
       resources:
@@ -43,7 +43,7 @@ spec:
       storageClassName: local-path
 ---
 apiVersion: storage.k8s.io/v1
-kind: StorageClass
+kind: StorageClass # добавляет доп. уровень абстракции и гибкости при работе с хранилищем данных
 metadata:
   name: local-path
 provisioner: rancher.io/local-path

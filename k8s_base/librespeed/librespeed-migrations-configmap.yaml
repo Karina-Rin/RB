@@ -5,7 +5,7 @@ metadata:
   name: mysql-sql
   namespace: final
 data:
-  telemetry_mysql.sql: |
+  telemetry_mysql.sql: | # Инициализируем структуру базы из sql-скрипта (из results/telemetry_mysql.sql). Монтируем внутрь контейнера (согласно hub.docker.com)
     SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
     SET AUTOCOMMIT = 0;
     START TRANSACTION;

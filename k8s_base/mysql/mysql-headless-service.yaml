@@ -5,11 +5,11 @@ metadata:
   name: mysql-headless
   namespace: db
   labels:
-    app: db
+    app: db # Метка на всех манифестах, касающихся СУБД
 spec:
-  clusterIP: None
+  clusterIP: None # Headless-сервис
   ports:
     - port: 3306
       targetPort: 3306
   selector:
-    app: db
+    app: db # Метка на всех манифестах, касающихся СУБД

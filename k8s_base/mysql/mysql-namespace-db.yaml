@@ -1,5 +1,6 @@
 # Виртуальный кластер для организации и структурирования объектов Kubernetes
+# (пространство имен) для разворачивания СУБД MySQL
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: final
+  name: db

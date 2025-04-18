@@ -1,5 +1,6 @@
 # Виртуальный кластер для организации и структурирования объектов Kubernetes
+# (пространство имен) для разворачивая приложения
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: db
+  name: final

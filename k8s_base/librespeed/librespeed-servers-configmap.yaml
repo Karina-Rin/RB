@@ -2,10 +2,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: librespeed-servers
+  name: librespeed-servers # имя конфигмапы
   namespace: final
 data:
-  servers.json: |
+  servers.json: | # для списка использован файл servers.json
     [
       {
         "name": "Helsinki, Finland (1) (Hetzner)",

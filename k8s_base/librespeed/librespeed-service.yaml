@@ -6,14 +6,14 @@ metadata:
   name: librespeed
   namespace: final
   labels:
-    app.kubernetes.io/instance: librespeed
+    app.kubernetes.io/instance: librespeed # Метка на всех манифестах, касающихся приложения
 spec:
   type: NodePort
   selector:
-    app.kubernetes.io/instance: librespeed
+    app.kubernetes.io/instance: librespeed # Метка на всех манифестах, касающихся приложения
   ports:
     - protocol: TCP
       name: http
       port: 80
       targetPort: 80
-      nodePort: 30080
+      nodePort: 30080 # порт, по которому сервис будет доступен для внешних клиентов за пределами кластера kubernetes

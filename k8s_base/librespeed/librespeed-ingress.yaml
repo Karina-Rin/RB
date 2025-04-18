@@ -2,13 +2,16 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: librespeed-ingress
+  name: librespeed-ingress # Имя для ingress-объекта
   namespace: final
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/proxy-set-headers: | # Ingress пересылает дополнительные заголовки X-forwarded-For и X-real-ip
+      X-Real-IP: $remote_addr
+      X-Forwarded-For: $proxy_add_x_forwarded_for
 spec:
   rules:
-  - host: librespeed.example.com
+  - host: <мой IP>.nip.io # для локального запуска
     http:
       paths:
       - path: /

@@ -5,11 +5,11 @@ metadata:
   name: mysql-configmap
   namespace: db
   labels:
-    app: db
+    app: db # Метка на всех манифестах, касающихся СУБД
 data:
   MYSQL_DATABASE: "librespeed"
-  DB_TYPE: "mysql"
-  DB_CONNECTION: "mysql"
-  DB_HOSTNAME: "mysql"
-  DB_PORT: "3306"
-  DB_NAME: "librespeed"
+  DB_TYPE: "mysql" # в качестве базы данных используется MySQL
+  DB_CONNECTION: "mysql" # тип соединения с базой данных
+  DB_HOSTNAME: "mysql" # имя хоста (адрес) сервера MySQL
+  DB_PORT: "3306" # Порт, который используется для подключения к серверу MySQL (стандартный порт MySQL)
+  DB_NAME: "librespeed" # Имя базы данных MySQL, которая будет использоваться для хранения данных LibreSpeed
